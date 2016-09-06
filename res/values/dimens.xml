@@ -1,0 +1,36 @@
+<resources>
+    <!-- global -->
+    <dimen name="font_size_xxxxs">10sp</dimen>
+    <dimen name="font_size_xxxs">12sp</dimen>
+    <dimen name="font_size_xxs">14sp</dimen>
+    <dimen name="font_size_xs">16sp</dimen>
+    <dimen name="font_size_s">18sp</dimen>
+    <dimen name="font_size_m">20sp</dimen>
+    <dimen name="font_size_l">22sp</dimen>
+    <dimen name="font_size_xl">24sp</dimen>
+    <dimen name="font_size_xxl">26sp</dimen>
+    <dimen name="font_size_xxxl">28sp</dimen>
+    <dimen name="font_size_xxxxl">30sp</dimen>
+
+    <dimen name="activity_margin">40dp</dimen>
+
+    <!-- button -->
+    <dimen name="button_vertical_padding">10dp</dimen>
+
+    <!-- live fragment -->
+    <dimen name="channel_horizontal_margin">15dp</dimen>
+    <dimen name="channel_vertical_margin">10dp</dimen>
+
+    <!-- main activity video wall margin -->
+    <dimen name="item_space">10dp</dimen>
+    <dimen name="search_padding">10dp</dimen>
+    <dimen name="tittle_margin">60dp</dimen>
+
+    <!-- good show fragment -->
+
+    <!-- catch up  epg fragment -->
+
+    <!-- setting fragment -->
+    <dimen name="setting_app_width">100dp</dimen>
+
+</resources>

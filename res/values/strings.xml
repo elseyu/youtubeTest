@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SunniwellYouTube</string>
+    <string name="youtube">YouTube</string>
+    <string name="failed">Failed to initialize Youtube Player</string>
+    <string name="goto_video_wall">Goto VideoWall</string>
+    <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
+    <string name="page_index">0/0</string>
+    <string name="vod_info_tittle">YouTube</string>
+    <string name="search_hint">Search</string>
+</resources>
+

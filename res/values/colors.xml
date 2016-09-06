@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="red">#FFFF0000</color>
+    <color name="yellow">#FFFFFF00</color>
+    <color name="green">#FF00FF00</color>
+    <color name="emerald">#70a440</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="dark_gray">#80000000</color>
+    <color name="light_gray">#80FFFFFF</color>
+
+    <color name="button_background">#FF609071</color>
+    <color name="button_focus_background">#FF314638</color>
+
+    <color name="player_epg_select">#FF5A6E5A</color>
+    <color name="player_progress_background">#FF202C21</color>
+    <color name="player_progress">#FF64896E</color>
+
+    <color name="live_item_back1">#FF72BC77</color>
+    <color name="live_item_back2">#FF66A86B</color>
+    <color name="live_item_back3">#FF5A935E</color>
+    <color name="live_item_back4">#FF49784D</color>
+
+    <color name="vod_detail_font">#FF27442E</color>
+
+    <color name="toast_background">#46c5c1FF</color>
+    <color name="seek_bar_deep_red">#c51008</color>
+    <color name="seek_bar_red">#e72016</color>
+</resources>
