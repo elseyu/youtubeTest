@@ -49,6 +49,10 @@ import java.util.List;
 import java.util.Map;
 
 import rx.Scheduler;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 
 public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
@@ -135,18 +139,25 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 String keyWord = mSearchText.getText().toString();
                 if (!keyWord.trim().equals("")) {
-                    new Thread(){
-                        public void run(){
-                            mSearchResults = mYouTubeSearcher.search(keyWord);
-                            if (mSearchResults != null) {
-                                mHandler.post(new Runnable(){
-                                    public void run(){
+                    rx.Observable.just(keyWord)
+                            .observeOn(Schedulers.io())
+                            .map(new Func1<String, List<VideoBean>>() {
+                                @Override
+                                public List<VideoBean> call(String s) {
+                                    return mYouTubeSearcher.search(keyWord);
+                                }
+                            })
+                            .subscribeOn(AndroidSchedulers.mainThread())
+                            .doOnNext(new Action1<List<VideoBean>>() {
+                                @Override
+                                public void call(List<VideoBean> searchResults) {
+                                    mSearchResults = searchResults;
+                                    if (mSearchResults != null) {
                                         mAdapter.notifyDataSetChanged();
                                     }
-                                });
-                            }
-                        }
-                    }.start();
+                                }
+                            })
+                            .subscribe();
                 }
             }
         });
@@ -157,25 +168,30 @@ public class MainActivity extends Activity {
         EffectNoDrawBridge bridge = new EffectNoDrawBridge();
         bridge.setTranDurAnimTime(200);
         mMainView.setEffectBridge(bridge);
-//        mMainView.setUpRectResource(R.drawable.test_rectangle);
         mMainView.setUpRectResource(R.drawable.item_focus);
-//        mMainView.setShadowResource(R.drawable.item_shadow);
         mMainView.setDrawUpRectPadding(new Rect(10, 10, 10, 10));
     }
 
-    private void searchOnYoutube(final String keywords){
-        new Thread(){
-            public void run(){
-                mSearchResults = mYouTubeSearcher.search(keywords);
-                if (mSearchResults != null) {
-                    mHandler.post(new Runnable(){
-                        public void run(){
+    private void searchOnYoutube(final String keyWord){
+        rx.Observable.just(keyWord)
+                .observeOn(Schedulers.io())
+                .map(new Func1<String, List<VideoBean>>() {
+                    @Override
+                    public List<VideoBean> call(String s) {
+                        return mYouTubeSearcher.search(keyWord);
+                    }
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Action1<List<VideoBean>>() {
+                    @Override
+                    public void call(List<VideoBean> searchResults) {
+                        mSearchResults = searchResults;
+                        if (mSearchResults != null) {
                             updateVideosFound();
                         }
-                    });
-                }
-            }
-        }.start();
+                    }
+                })
+                .subscribe();
     }
 
     private void updateVideosFound(){
@@ -233,21 +249,28 @@ public class MainActivity extends Activity {
     }
 
     private void getNextPage() {
-        new Thread(){
-            public void run(){
-                mNextPage = mYouTubeSearcher.getNextPage();
-                if (mNextPage != null) {
-                    mSearchResults.addAll(mNextPage);
-                    mHandler.post(new Runnable(){
-                        public void run(){
+        rx.Observable.just("")
+                .observeOn(Schedulers.io())
+                .map(new Func1<String, List<VideoBean>>() {
+                    @Override
+                    public List<VideoBean> call(String s) {
+                        return mYouTubeSearcher.getNextPage();
+                    }
+                })
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Action1<List<VideoBean>>() {
+                    @Override
+                    public void call(List<VideoBean> nextPage) {
+                        mNextPage = nextPage;
+                        if (mNextPage != null) {
+                            mSearchResults.addAll(mNextPage);
                             mAdapter.notifyDataSetChanged();
                             updatePageIndex();
                             isLoadingMore = false;
                         }
-                    });
-                }
-            }
-        }.start();
+                    }
+                })
+                .subscribe();
     }
 
     private BaseAdapter mAdapter = new BaseAdapter() {
