@@ -42,8 +42,15 @@
 - 新增注意:需要先安装YouTube客户端
 
 ## 4.效果展示
-- 待添加
+- 默认
+    ![image](https://github.com/elseyu/youtubeTest/raw/master/images/095344.png)
+- 搜索
+    ![image](https://github.com/elseyu/youtubeTest/raw/master/images/095529.png)
+    ![image](https://github.com/elseyu/youtubeTest/raw/master/images/095554.png)
 
+- 播放
+    ![image](https://github.com/elseyu/youtubeTest/raw/master/images/100642.png)
+    ![image](https://github.com/elseyu/youtubeTest/raw/master/images/100708.png)
 ## 5.优化
 -   其实可以用rxJava来使代码更简洁
 -   在IconItem.java其实可以不用ImageLoader的缓存,自己做也行,实现起来也不复杂,这样的优点的不依赖任何框架,缺点是自己写估计没有框架的缓存策略好
